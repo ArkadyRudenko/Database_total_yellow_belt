@@ -3,7 +3,6 @@
 #include "node.h"
 #include "test_runner.h"
 
-
 #include <iostream>
 #include <vector>
 #include <stdexcept>
