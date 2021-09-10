@@ -2,6 +2,7 @@
 #include "condition_parser.h"
 #include "node.h"
 #include "test_runner.h"
+#include "command.h"
 
 #include <iostream>
 #include <vector>
@@ -9,13 +10,6 @@
 #include "database.h"
 
 using namespace std;
-
-string ParseEvent(istream& is) {
-    string event;
-    is >> ws;
-    getline(is, event);
-    return event;
-}
 
 void TestAll();
 
@@ -29,7 +23,13 @@ int main() {
 
         string command;
         is >> command;
-        if (command == "Add") {
+        InputHandler ih;
+        if (!ih.handleInput(command, is, db)) {
+            continue;
+        }
+        
+        
+        /*if (command == "Add") {
             const auto date = ParseDate(is);
             const auto event = ParseEvent(is);
             db.Add(date, event);
@@ -70,7 +70,7 @@ int main() {
         }
         else {
             throw logic_error("Unknown command: " + command);
-        }
+        }*/
     }
 
     return 0;
