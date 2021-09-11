@@ -88,8 +88,8 @@ bool operator<=(const Date& lhs, const Date& rhs) {
 
 
 ostream& operator<<(ostream& stream, const Date& lhs) {
-    stream << setw(4) << setfill('0') << lhs.GetYear() << " "
-        << setw(2) << setfill('0') << lhs.GetMonth() << " "
+    stream << setw(4) << setfill('0') << lhs.GetYear() << "-"
+        << setw(2) << setfill('0') << lhs.GetMonth() << "-"
         << setw(2) << setfill('0') << lhs.GetDay();
     return stream;
 }

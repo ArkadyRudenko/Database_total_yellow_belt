@@ -150,7 +150,8 @@ Date ParseDate(istream& is) {
     EnsureNextSymbolAnsSkip(is);
     is >> day;
     is.ignore(1);
-    if (month > 12 or month < 1 or day < 1 or day > 31 or year < 0 or year > 9999) {
+    if (month > 12 or month < 1 or
+        day < 1 or day > 31 or year < 0 or year > 9999) {
         stringstream ss;
         ss << "Month or day value is invalid: " << month << " " << day;
         throw runtime_error(ss.str());      

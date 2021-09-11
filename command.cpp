@@ -7,22 +7,22 @@ string ParseEvent(istream& is) {
 	return event;
 }
 
-void DelCommand::Execute(std::istringstream& is, Database& db) {
+void DelCommand::Execute(std::istringstream& is, Database& db, std::ostream& out) {
 	auto condition = ParseCondition(is);
 	auto predicate = [condition](const Date& date, const string& event) {
 		return condition->Evaluate(date, event);
 	};
 	int count = db.RemoveIf(predicate);
-	cout << "Removed " << count << " entries" << endl;
+	out << "Removed " << count << " entries" << endl;
 }
 
-void AddCommand::Execute(std::istringstream& is, Database& db) {
+void AddCommand::Execute(std::istringstream& is, Database& db, std::ostream& out) {
 	const auto date = ParseDate(is);
 	const auto event = ParseEvent(is);
 	db.Add(date, event);
 }
 
-void FindCommand::Execute(std::istringstream& is, Database& db) {
+void FindCommand::Execute(std::istringstream& is, Database& db, std::ostream& out) {
 	auto condition = ParseCondition(is);
 	auto predicate = [condition](const Date& date, const string& event) {
 		return condition->Evaluate(date, event);
@@ -30,50 +30,51 @@ void FindCommand::Execute(std::istringstream& is, Database& db) {
 
 	const auto entries = db.FindIf(predicate);
 	for (const auto& entry : entries) {
-		cout << entry << endl;
+		out << entry << endl;
 	}
-	cout << "Found " << entries.size() << " entries" << endl;
+	out << "Found " << entries.size() << " entries" << endl;
 }
 
-void PrintCommand::Execute(std::istringstream& is, Database& db) {
-	db.Print(cout);
+void PrintCommand::Execute(std::istringstream& is, Database& db, std::ostream& out) {
+	db.Print(out);
 }
 
-void LastCommand::Execute(std::istringstream& is, Database& db) {
+void LastCommand::Execute(std::istringstream& is, Database& db, std::ostream& out) {
+	
 	try {
-		cout << db.Last(ParseDate(is)) << endl;
+		out << db.Last(ParseDate(is)) << endl;
 	}
 	catch (invalid_argument&) {
-		cout << "No entries" << endl;
+		out << "No entries" << endl;
 	}
 }
 
 bool InputHandler::handleInput(const string& command,
-	std::istringstream& is, Database& db) {
+	std::istringstream& is, Database& db, std::ostream& out) {
 	if (command == "Del") {
 		DelCommand dc;
 		del = &dc;
-		del->Execute(is, db);
+		del->Execute(is, db, out);
 	}
 	else if (command == "Find") {
 		FindCommand fc;
 		find = &fc;
-		find->Execute(is, db);
+		find->Execute(is, db, out);
 	}
 	else if (command == "Add") {
 		AddCommand ac;
 		add = &ac;
-		add->Execute(is, db);
+		add->Execute(is, db, out);
 	}
 	else if (command == "Last") {
 		LastCommand lc;
 		last = &lc;
-		last->Execute(is, db);
+		last->Execute(is, db, out);
 	}
 	else if (command == "Print") {
 		PrintCommand pc;
 		print = &pc;
-		print->Execute(is, db);
+		print->Execute(is, db, out);
 	}
 	else if (command.empty()) {
 		return false;
