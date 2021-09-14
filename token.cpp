@@ -1,6 +1,5 @@
 #include "token.h"
 
-
 using namespace std;
 
 vector<Token> Tokenize(istream& cl) {

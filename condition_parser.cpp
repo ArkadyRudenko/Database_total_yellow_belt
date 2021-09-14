@@ -59,8 +59,9 @@ shared_ptr<Node> ParseComparison(It& current, It end) {
     ++current;
 
     if (column.value == "date") {
-        istringstream is(value);
+        istringstream is(value);     
         return make_shared<DateComparisonNode>(cmp, ParseDate(is));
+       
     }
     else {
         return make_shared<EventComparisonNode>(cmp, value); // cmp = NotEqual, value = "work"

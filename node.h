@@ -1,8 +1,12 @@
 #pragma once
-#include<string>
+
 #include "token.h"
-#include "Date.h"
+#include "date.h"
+#include<string>
+#include<memory>
+
 using namespace std;
+
 class Node {
 public:
     virtual bool Evaluate(const Date&, const string&) const = 0;

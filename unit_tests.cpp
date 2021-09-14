@@ -1,5 +1,15 @@
 #include "unit_tests.h"
 
+void TestAll() {
+    TestRunner tr;
+    tr.RunTest(TestParseEvent, "TestParseEvent");
+    tr.RunTest(TestParseCondition, "TestParseCondition");
+    tr.RunTest(TestDel, "TestDel");
+    tr.RunTest(TestFind, "TestFind");
+    tr.RunTest(TestLast, "TestLast");
+    tr.RunTest(TestPrint, "TestPrint");
+}
+
 void PasreRequest(istringstream& test, Database& db, stringstream& out) {
     for (string line; getline(test, line); ) {
         istringstream is(line);
@@ -31,15 +41,7 @@ void TestParseEvent() {
     }
 }
 
-void TestAll() {
-    TestRunner tr;
-    tr.RunTest(TestParseEvent, "TestParseEvent");
-    tr.RunTest(TestParseCondition, "TestParseCondition");
-    tr.RunTest(TestDel, "TestDel");
-    tr.RunTest(TestFind, "TestFind");
-    tr.RunTest(TestLast, "TestLast");
-    tr.RunTest(TestPrint, "TestPrint");
-}
+
 
 
 void TestDel() {

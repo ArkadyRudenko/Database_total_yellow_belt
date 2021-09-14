@@ -19,16 +19,16 @@ void Database::Print(ostream& is) const {
 
 vector<string> Database::FindIf(
     function<bool(const Date&, const string&)> predicate) const {
-        vector<string> findevents;
-        for (const auto& [date, events] : storage) {
-            for (const string& event : events) {
-                if (predicate(date, event)) {
-                    ostringstream os;
-                    os << date << " " << event;
-                    findevents.push_back(os.str());
-                }
+    vector<string> findevents;
+    for (const auto& [date, events] : storage) {
+        for (const string& event : events) {
+            if (predicate(date, event)) {
+                ostringstream os;
+                os << date << " " << event;
+                findevents.push_back(os.str());
             }
         }
+    }
     return findevents;
 }
 
@@ -58,11 +58,13 @@ int Database::RemoveIf(function<bool(const Date&, const string&)> predicate) {
 }
 
 string Database::Last(const Date& date) const {
-    if(vstorage.empty())
+    if(vstorage.empty()) {
         throw invalid_argument("Empty database");
+    }
     auto it = vstorage.upper_bound(date);
-    if (it == vstorage.cbegin())
+    if (it == vstorage.cbegin()) {
         throw invalid_argument("Empty database");
+    }
     else {
         it--;
         ostringstream os;

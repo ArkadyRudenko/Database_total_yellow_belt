@@ -1,13 +1,15 @@
 #pragma once
 #include "date.h"
-#include<map>
+
+#include <algorithm>
+#include<functional>
 #include <iostream>
 #include <sstream>
-#include<set>
 #include<string>
 #include<vector>
-#include<functional>
-#include <algorithm>
+#include<set>
+#include<map>
+
 using namespace std;
 
 class Database {
