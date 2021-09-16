@@ -2,8 +2,8 @@
 
 #include "token.h"
 #include "date.h"
-#include<string>
-#include<memory>
+#include <string>
+#include <memory>
 
 using namespace std;
 
@@ -45,6 +45,6 @@ private:
 };
 
 template<typename T>
-bool СomparisonStringOrEvent(Comparison,const T&, const T&);
+bool ComparisonStringOrEvent(Comparison,const T&, const T&);
 
 

@@ -8,14 +8,14 @@ DateComparisonNode::DateComparisonNode(Comparison cmp, const Date& d)
     : date_(d), cmp_(cmp){};
 
 bool DateComparisonNode::Evaluate(const Date& date, const string& event)  const {
-    return СomparisonStringOrEvent(cmp_, date_, date);
+    return ComparisonStringOrEvent(cmp_, date_, date);
 }
 
 EventComparisonNode::EventComparisonNode(Comparison cmp, const string& event)
     : event_(event), cmp_(cmp) {}
 
 bool EventComparisonNode::Evaluate(const Date& data, const string& event) const {
-    return СomparisonStringOrEvent(cmp_, event_, event);
+    return ComparisonStringOrEvent(cmp_, event_, event);
 }
 
 LogicalOperationNode::LogicalOperationNode(
@@ -31,7 +31,7 @@ bool LogicalOperationNode::Evaluate(const Date& date, const string& event) const
 }
 
 template<typename T>
-bool СomparisonStringOrEvent(Comparison cmp_,const T& lhs,const T& rhs) {
+bool ComparisonStringOrEvent(Comparison cmp_,const T& lhs,const T& rhs) {
         if (cmp_ == Comparison::Equal) {
 		    return lhs == rhs;
 	    }
