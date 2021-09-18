@@ -1,22 +1,23 @@
-# mkdir build
+﻿# mkdir build
 # cd build
-# cmake..
+# cmake ..
 # cmake --build .
 # .\Debug\DataBase.exe
 
-cmake_minimum_required(VERSION 3.20.5 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.18 FATAL_ERROR)
 
 project(DataBase)
 
-set(PROJECT_HEADERS_DIR ${PROJECT_SOURCE_DIR}/include)
-set(PROJECT_SOURCES_DIR ${PROJECT_SOURCE_DIR}/src)
+include_directories(include/database)
+include_directories(include/parser)
+include_directories(include/tests)
 
-file(GLOB_RECURSE HEADERS ${PROJECT_HEADERS_DIR}/*.h)
-file(GLOB_RECURSE SOURCES ${PROJECT_SOURCES_DIR}/*.cpp)
 
-add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
+file(GLOB_RECURSE SOURCES "src/*.cpp")
 
-include_directories(${PROJECT_HEADERS_DIR})
+
+add_executable(${PROJECT_NAME} ${SOURCES})
+
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 
