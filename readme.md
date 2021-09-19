@@ -18,14 +18,23 @@ Check the С++17 is installed on the system.
  ```
  git clone -b Pattern_Command https://github.com/ArkadyRudenko/Database_total_yellow_belt.git
  ```
- Run
+ #Unix systems
+
+ ##Run
+ From the project root path just run:
  ```
- mkdir build
- cd build
+ make
  ```
- Then
+ 
+
+##Windows
+Check the make is installed:
+```
+mingw32-make.exe
+```
+ ##Run
+ From the project root path just run:
  ```
- cmake ..
- cmake --build .
- .\Debug\DataBase.exe
+ mingw32-make.exe
  ```
+ 
