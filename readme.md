@@ -1,4 +1,4 @@
-#Data Base
+# Data Base
 ---
 DataBase can store data in the form Date - event 
 and supports the following operations:
@@ -18,21 +18,21 @@ Check the С++17 is installed on the system.
  ```
  git clone -b Pattern_Command https://github.com/ArkadyRudenko/Database_total_yellow_belt.git
  ```
- #Unix systems
+ # Unix systems
 
- ##Run
+ ### Run
  From the project root path just run:
  ```
  make
  ```
  
 
-##Windows
+## Windows
 Check the make is installed:
 ```
 mingw32-make.exe
 ```
- ##Run
+ ### Run
  From the project root path just run:
  ```
  mingw32-make.exe
