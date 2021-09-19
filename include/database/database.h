@@ -2,13 +2,13 @@
 #include "date.h"
 
 #include <algorithm>
-#include<functional>
+#include <functional>
 #include <iostream>
 #include <sstream>
-#include<string>
-#include<vector>
-#include<set>
-#include<map>
+#include <string>
+#include <vector>
+#include <set>
+#include <map>
 
 using namespace std;
 
@@ -22,7 +22,6 @@ public:
     vector<string> FindIf(function<bool(const Date&, const string&)> predicate) const;
     
     int RemoveIf(function<bool(const Date&, const string&)>);
- 
  
 private:
     map<Date, vector<string>> vstorage;

@@ -4,8 +4,6 @@ else
 	FLAGS = ""
 endif
 
-PATH := $(PATH):/cmake/build/debug
-
 all: clean reload build exec
 
 run: reload build exec
@@ -20,7 +18,8 @@ exec:
 	./cmake-build-debug/DataBase
 
 clean:
-	rm -rf cmake-build-debug 
+	rm -rf cmake-build-debug
 
 reload: mkdir_build
 	cd cmake-build-debug;cmake $(FLAGS) ..
+	
