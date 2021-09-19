@@ -22,4 +22,3 @@ clean:
 
 reload: mkdir_build
 	cd cmake-build-debug;cmake $(FLAGS) ..
-	
